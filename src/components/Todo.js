@@ -2,6 +2,7 @@ import React from 'react'
 import Button from './form/Button'
 import TextInput from './form/TextInput'
 import TaskList from './TaskList'
+import { cloneDeep } from 'lodash';
 
 export default class Todo extends React.Component {
 
@@ -49,10 +50,15 @@ export default class Todo extends React.Component {
   }
 
   completeTask = (index, status) => {
+    const todosClone = cloneDeep(this.state.todos)
+    todosClone[index].completed = status 
+    // this.setState(
+    //   { todos: this.state.todos.map((todo, key) => {
+    //     return index === key ? { ...todo, completed: status  } : todo
+    //   })}
+    // )
     this.setState(
-      { todos: this.state.todos.map((todo, key) => {
-        return index === key ? { ...todo, completed: status  } : todo
-      })}
+      { todos: todosClone }
     )
   }
 
