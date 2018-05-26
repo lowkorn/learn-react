@@ -26,7 +26,7 @@ export default class Todo extends React.Component {
           </div>
         </form>
         <div>
-          <TaskList todos={ this.state.todos } />
+          <TaskList todos={ this.state.todos } completeTask={ this.completeTask } />
         </div>
       </div>
     )
@@ -42,9 +42,19 @@ export default class Todo extends React.Component {
     if (this.state.text.length) {
       let newTask = this.state.text
       this.setState({
-        todos: this.state.todos.concat({ task: newTask, 'completed': false }),
+        todos: [ ...this.state.todos, { task: newTask, 'completed': false } ],
         text: ''
       })
     }
   }
+
+  completeTask = (index, status) => {
+    this.setState(
+      { todos: this.state.todos.map((todo, key) => {
+        return index == key ? { ...todo, completed: status  } : todo
+      })}
+    )
+  }
+
+  // deleteTask (index) 
 }
