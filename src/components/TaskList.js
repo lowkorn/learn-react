@@ -19,7 +19,7 @@ export default class TaskList extends React.Component {
       )
     }
   }
-  
+
   render() {
     return (
       <div>
@@ -27,7 +27,7 @@ export default class TaskList extends React.Component {
           <div key={ index } className="clearfix">
             <Checkbox className="float-left" checked={ todo.completed } label={ todo.task } onClick={ this.props.completeTask.bind(this, index) } />
             { this.TaskLabel(todo) }
-            <CloseButton className="float-right" />
+            <CloseButton className="float-right" onClick={ this.props.deleteTask.bind(this, index) } />
           </div>
         )) }
       </div>
