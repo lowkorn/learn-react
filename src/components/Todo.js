@@ -51,7 +51,7 @@ export default class Todo extends React.Component {
   completeTask = (index, status) => {
     this.setState(
       { todos: this.state.todos.map((todo, key) => {
-        return index == key ? { ...todo, completed: status  } : todo
+        return index === key ? { ...todo, completed: status  } : todo
       })}
     )
   }
