@@ -26,7 +26,7 @@ export default class Todo extends React.Component {
           </div>
         </form>
         <div>
-          <TaskList todos={ this.state.todos } completeTask={ this.completeTask } />
+          <TaskList todos={ this.state.todos } completeTask={ this.completeTask } deleteTask={ this.deleteTask } />
         </div>
       </div>
     )
@@ -56,5 +56,11 @@ export default class Todo extends React.Component {
     )
   }
 
-  // deleteTask (index) 
+  deleteTask = (index) => {
+    let head = this.state.todos.slice(0, index)
+    let tail = this.state.todos.slice(index + 1)
+    this.setState({
+      todos: [ ...head, ...tail ]
+    })
+  }
 }
