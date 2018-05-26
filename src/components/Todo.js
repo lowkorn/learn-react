@@ -51,12 +51,7 @@ export default class Todo extends React.Component {
 
   completeTask = (index, status) => {
     const todosClone = cloneDeep(this.state.todos)
-    todosClone[index].completed = status 
-    // this.setState(
-    //   { todos: this.state.todos.map((todo, key) => {
-    //     return index === key ? { ...todo, completed: status  } : todo
-    //   })}
-    // )
+    todosClone[index].completed = status
     this.setState(
       { todos: todosClone }
     )
